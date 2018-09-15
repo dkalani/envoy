@@ -729,12 +729,12 @@ ConnectionImpl::Http2Callbacks::Http2Callbacks() {
         return static_cast<ConnectionImpl*>(user_data)->onInvalidFrame(frame->hd.stream_id,
                                                                        error_code);
       });
-      
+
   nghttp2_session_callbacks_set_error_callback(
       callbacks_,
       [](nghttp2_session*, const nghttp2_frame* frame, int error_code, void* user_data) -> int {
-          return static_cast<ConnectionImpl*>(user_data)->onInvalidFrame(frame->hd.stream_id,
-                                                                        error_code);
+        return static_cast<ConnectionImpl*>(user_data)->onInvalidFrame(frame->hd.stream_id,
+                                                                       error_code);
       });
 }
 
